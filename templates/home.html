@@ -1,0 +1,88 @@
+<!DOCTYPE html>
+<html>
+    <head>
+        <meta name="viewport" content="width=device-width, initial-scale=1.0">
+        <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.3.1/css/bootstrap.min.css" integrity="sha384-ggOyR0iXCbMQv3Xipma34MD+dH/1fQ784/j6cY/iJTQUOhcWr7x9JvoRxT2MZw1T" crossorigin="anonymous">
+        <!--<link rel="stylesheet" href="{{ url_for('.static', filename='style.css') }}">-->
+        <title>OpenWeather</title>
+        <meta charset="utf-8">
+        <style>
+        #main_header{
+            background-color: red;
+            width: 100%;
+            height: 45%;
+            position: absolute;
+            top: 0px;
+            left: 0px;
+            right: 0px;
+        }
+        #main_header_h1{
+            position: relative;
+            top: 20%;
+            left: 20%;
+            
+            color: white;
+        }
+        #form_container{
+          position: absolute;
+          top: 300px;
+
+        }
+        #weather_info{
+          position: absolute;
+          top: 400px;
+          width: 100%;
+          height: 30%;
+          background-color: aqua;
+        }
+        
+        </style>
+        
+    </head>
+  <body>
+    <div id="main_header">
+        <h1 id="main_header_h1">Weather provided by OpenWeatherMap</h1>
+    </div>
+
+    <!-- form bootstrap-->
+  <div class="container" id="form_container">
+    <form action="/get_city" method="POST">
+       <div class="row">
+        <div class="col-sm">
+            <input class="form-control" type="text" placeholder="Enter the city" name="city_input">
+          </div>
+          <div class="col-sm">
+            <input type="submit" name="search">
+          </div>
+        </div>
+    </form>
+  </div>
+
+  <div id="weather_info">
+
+  {% if message %}
+    <p>{{ message_error }}</p>
+  {%else %}
+    <p>{{ meteo_data}}</p>
+  {% endif %}
+
+  <div class="weather_info">
+
+  </div>
+
+
+
+  </div>
+
+
+
+
+
+    
+    
+
+    <script src="https://code.jquery.com/jquery-3.3.1.slim.min.js" integrity="sha384-q8i/X+965DzO0rT7abK41JStQIAqVgRVzpbzo5smXKp4YfRvH+8abtTE1Pi6jizo" crossorigin="anonymous"></script>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/popper.js/1.14.7/umd/popper.min.js" integrity="sha384-UO2eT0CpHqdSJQ6hJty5KVphtPhzWj9WO1clHTMGa3JDZwrnQq4sF86dIHNDz0W1" crossorigin="anonymous"></script>
+    <script src="https://stackpath.bootstrapcdn.com/bootstrap/4.3.1/js/bootstrap.min.js" integrity="sha384-JjSmVgyd0p3pXB1rRibZUAYoIIy6OrQ6VrjIEaFf/nJGzIxFDsf4x0xIM+B07jRM" crossorigin="anonymous"></script>
+  </body>
+</html>
