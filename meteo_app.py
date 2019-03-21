@@ -8,15 +8,10 @@ import json
 
 app = Flask(__name__)
 
-
-
+#reads a file with OpenWeatherapi token
 with open('weather_id.txt','r') as file_id:
     weather_id = str(file_id.read())
  
-
-
-
-
 @app.route('/')
 def index():
     return render_template("home.html")
@@ -24,26 +19,21 @@ def index():
 @app.route('/get_city',methods=['POST'])
 def get_city():
     city_name = request.form['city_input']
+    
+    #Weather requests for now works only with italian cities
     url = '''http://api.openweathermap.org/data/2.5/weather?q={},IT&APPID=%s'''.format(city_name)%weather_id
+
     res = requests.get(url)
     data = res.json()
-    message = ""
-    weather_data = ""
-    if data['cod'] == '200':
-        message = "City not found"
+    if data['cod'] == '404':
+        message = str(city_name) + "\t not found"
+        return render_template("home.html",message_error = message)
     else:
-        weather_data = data['weather'][0]['description']
-    
-    #weather_data = data#['weather'][0]['description']
-    #print(data['weather'][0]['description'])
-    
+        weather_data_description = data['weather'][0]['description']
+        weather_data_response = "Weather in \t "+ str(city_name) +"\tis\t" + str(weather_data_description)
+        return render_template("home.html",weather_data = weather_data_response)
 
-    
-
-
-    
-    return render_template("home.html",message_error = message, meteo_data = weather_data)
-  
+    return render_template("home.html")
   
 if __name__ == '__main__':
     app.run(debug=True)
