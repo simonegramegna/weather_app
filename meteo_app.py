@@ -26,6 +26,8 @@ def index():
 
 @app.route('/get_city',methods=['POST'])
 def get_city():
+
+    #gets data form the two text forms
     city_name = request.form['city_input']
     country_name = request.form['country_input']
     country_code = country_dict[country_name]
@@ -34,16 +36,13 @@ def get_city():
 
     res = requests.get(url)
     data = res.json()
-
     data_code_response = data['cod']
-    
-    #sistema il template meglio!!
     
     if  data_code_response == '404':
         message = "City\t" + str(city_name) + "\t not found"
         return render_template("home.html",message_error = message)
-    if data_code_response == '200':
-
+        
+    if data_code_response == 200:
         #gets weather data
         weather_description = data['weather'][0]['description']
         weather_temp = data['main']['temp']  
@@ -51,17 +50,13 @@ def get_city():
         weather_pressure = data['main']['pressure']
         weather_windspeed = data['wind']['speed']
 
-        return render_template("home.html",
+    return render_template("home.html",
         city_name = city_name,
         weather_description = weather_description,
         weather_temp = weather_temp, 
         weather_humidity = weather_humidity,
         weather_pressure = weather_pressure,
-        weather_windspeed = weather_windspeed
-        )
+        weather_windspeed = weather_windspeed )
     
-
-    return render_template("home.html")
-  
 if __name__ == '__main__':
     app.run(debug=True)
