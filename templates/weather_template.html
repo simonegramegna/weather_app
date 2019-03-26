@@ -1,0 +1,63 @@
+<!DOCTYPE html>
+<html>
+    <head>
+        <title>Weather app</title>
+        <meta charset="UTF-8">
+        <!--Bootstrap-->
+        <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.3.1/css/bootstrap.min.css" integrity="sha384-ggOyR0iXCbMQv3Xipma34MD+dH/1fQ784/j6cY/iJTQUOhcWr7x9JvoRxT2MZw1T" crossorigin="anonymous">
+        <meta name="viewport" content="width=device-width, initial-scale=1">
+        <link rel="stylesheet" href="style.css">
+    </head>
+<body>
+
+    <!--main header-->
+    <div class="main_header">
+        <div class="main_title_container">
+            <p>Weather provided by OpenWeatherMap</p>
+        </div>
+    </div>
+
+    <!--form group-->
+    <div class="form_group">
+      <form action="/get_city" action="POST">
+        <div class="input1_container">
+          <input type="text" autocomplete="off" placeholder="Insert a city">
+        </div>
+        <div class="input2_container">
+          <select>
+            <option>Italy</option>
+            <option>U.S.A.</option>
+            <option>United Kingdom</option>
+            <option>Germany</option>
+          </select>
+        </div>
+        <div class="input3_container">
+          <input type="submit">
+        </div>
+      </form>
+    </div>
+
+  <!--weather_info group-->
+  <div class="weather_info_container">
+    <div class="weather_info1">
+      <h1>Corato</h1>
+      <h2>18°C</h2>
+    </div>
+    <div class="weather_info2">
+      <h2>Sunny</h2>
+      <h3>Humidity: 1024 hPa</h3>
+      <h3>Windspeed: 10 Km/h</h3>
+    </div>
+  </div>
+
+  <!--footer-->
+  <footer>
+    
+  </footer>
+
+<script src="https://code.jquery.com/jquery-3.3.1.slim.min.js" integrity="sha384-q8i/X+965DzO0rT7abK41JStQIAqVgRVzpbzo5smXKp4YfRvH+8abtTE1Pi6jizo" crossorigin="anonymous"></script>
+<script src="https://cdnjs.cloudflare.com/ajax/libs/popper.js/1.14.7/umd/popper.min.js" integrity="sha384-UO2eT0CpHqdSJQ6hJty5KVphtPhzWj9WO1clHTMGa3JDZwrnQq4sF86dIHNDz0W1" crossorigin="anonymous"></script>
+<script src="https://stackpath.bootstrapcdn.com/bootstrap/4.3.1/js/bootstrap.min.js" integrity="sha384-JjSmVgyd0p3pXB1rRibZUAYoIIy6OrQ6VrjIEaFf/nJGzIxFDsf4x0xIM+B07jRM" crossorigin="anonymous"></script>
+  
+</body>
+</html>
