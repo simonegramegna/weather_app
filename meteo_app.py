@@ -1,8 +1,8 @@
 from flask  import Flask, render_template, request, flash
-from flask_bootstrap import Bootstrap
+#from flask_bootstrap import Bootstrap
 #from flask_wtf import FlaskForm
-#from wtforms import StringField, SubmitField, Form
-#from wtforms.validators import DataRequired, Length
+from wtforms import StringField, SubmitField, Form, validators
+from wtforms.validators import DataRequired, Length
 import requests
 import json
 
@@ -19,10 +19,15 @@ country_dict = {
 'Germany':'DE',
 'U.S.A':'US'
 }
+
+
+
+
+
  
 @app.route('/')
 def index():
-    return render_template("home.html")
+    return render_template("weather_template.html")
 
 @app.route('/get_city',methods=['POST'])
 def get_city():
@@ -40,7 +45,7 @@ def get_city():
     
     if  data_code_response == '404':
         message = "City\t" + str(city_name) + "\t not found"
-        return render_template("home.html",message_error = message)
+        return render_template("weather_template.html",message_error = message)
         
     if data_code_response == 200:
         #gets weather data
@@ -50,7 +55,7 @@ def get_city():
         weather_pressure = data['main']['pressure']
         weather_windspeed = data['wind']['speed']
 
-    return render_template("home.html",
+    return render_template("weather_template.html",
         city_name = city_name,
         weather_description = weather_description,
         weather_temp = weather_temp, 

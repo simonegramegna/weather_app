@@ -19,12 +19,12 @@
 
     <!--form group-->
     <div class="form_group">
-      <form action="/get_city" action="POST">
+      <form action="/get_city" method="POST">
         <div id="input1_container" class="input_forms">
-          <input type="text" autocomplete="off" placeholder="Insert a city">
+          <input type="text" autocomplete="off" placeholder="Insert a city"  name="city_input">
         </div>
         <div id="input2_container" class="input_forms">
-          <select>
+          <select name="country_input">
             <option>Italy</option>
             <option>U.S.A.</option>
             <option>United Kingdom</option>
@@ -39,15 +39,21 @@
 
   <!--weather_info group-->
   <div class="weather_info_container">
+  {% if weather_description %}
     <div class="weather_info1">
-      <h1>Corato</h1>
-      <h2>18°C</h2>
+      <h1>{{ city_name }}</h1>
+      <h2>{{ weather_temp }}°C</h2>
     </div>
     <div class="weather_info2">
-      <h2>Sunny</h2>
-      <h3>Humidity: 1024 hPa</h3>
-      <h3>Windspeed: 10 Km/h</h3>
+      <h2>{{ weather_description }}</h2>
+      <h3>Humidity: {{ weather_pressure }} hPa</h3>
+      <h3>Windspeed: {{ weather_windspeed }} Km/h</h3>
     </div>
+  {% elif message_error %}
+    <h2>City not found</h2>
+  {% else %}
+    <h2>Insert a city</h2>
+  {% endif %}
   </div>
 
   <!--footer-->
