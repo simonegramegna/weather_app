@@ -6,24 +6,24 @@
         <!--Bootstrap-->
         <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.3.1/css/bootstrap.min.css" integrity="sha384-ggOyR0iXCbMQv3Xipma34MD+dH/1fQ784/j6cY/iJTQUOhcWr7x9JvoRxT2MZw1T" crossorigin="anonymous">
         <meta name="viewport" content="width=device-width, initial-scale=1">
-        <link rel="stylesheet" href="style.css">
+        <link rel="stylesheet" href="{{ url_for('static', filename='style.css') }}">
     </head>
 <body>
 
     <!--main header-->
     <div class="main_header">
         <div class="main_title_container">
-            <p>Weather provided by OpenWeatherMap</p>
+            <p>Weather today.org</p>
         </div>
     </div>
 
     <!--form group-->
     <div class="form_group">
       <form action="/get_city" action="POST">
-        <div class="input1_container">
+        <div id="input1_container" class="input_forms">
           <input type="text" autocomplete="off" placeholder="Insert a city">
         </div>
-        <div class="input2_container">
+        <div id="input2_container" class="input_forms">
           <select>
             <option>Italy</option>
             <option>U.S.A.</option>
@@ -31,8 +31,8 @@
             <option>Germany</option>
           </select>
         </div>
-        <div class="input3_container">
-          <input type="submit">
+        <div id="input3_container" class="input_forms">
+          <input type="submit" value="Submit">
         </div>
       </form>
     </div>
@@ -51,9 +51,9 @@
   </div>
 
   <!--footer-->
-  <footer>
-    
-  </footer>
+  <div id="footer">
+    <h4>Made by Simone Gramegna</h4>
+  </div>
 
 <script src="https://code.jquery.com/jquery-3.3.1.slim.min.js" integrity="sha384-q8i/X+965DzO0rT7abK41JStQIAqVgRVzpbzo5smXKp4YfRvH+8abtTE1Pi6jizo" crossorigin="anonymous"></script>
 <script src="https://cdnjs.cloudflare.com/ajax/libs/popper.js/1.14.7/umd/popper.min.js" integrity="sha384-UO2eT0CpHqdSJQ6hJty5KVphtPhzWj9WO1clHTMGa3JDZwrnQq4sF86dIHNDz0W1" crossorigin="anonymous"></script>
