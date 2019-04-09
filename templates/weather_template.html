@@ -1,11 +1,12 @@
 <!DOCTYPE html>
 <html>
     <head>
-        <title>Weather app</title>
+        <title>Weather Today</title>
         <meta charset="UTF-8">
         <!--Bootstrap-->
         <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.3.1/css/bootstrap.min.css" integrity="sha384-ggOyR0iXCbMQv3Xipma34MD+dH/1fQ784/j6cY/iJTQUOhcWr7x9JvoRxT2MZw1T" crossorigin="anonymous">
         <meta name="viewport" content="width=device-width, initial-scale=1">
+        <!--css file-->
         <link rel="stylesheet" href="{{ url_for('static', filename='style.css') }}">
     </head>
 <body>
@@ -37,13 +38,14 @@
       </form>
     </div>
 
+     
   <!--weather_info group-->
   <div class="weather_info_container">
-  {% if weather_description %}
-    <div class="weather_info1">
-      <h1>{{ city_name }}</h1>
-      <h2>{{ weather_temp }}°C</h2>
-    </div>
+     {% if weather_description %}
+      <div class="weather_info1">
+        <h1>{{ city_name }}</h1>
+        <h2>{{ weather_temp }}°C</h2>
+      </div>
     <div class="weather_info2">
       <h2>{{ weather_description }}</h2>
       <h3>Humidity: {{ weather_pressure }} hPa</h3>
