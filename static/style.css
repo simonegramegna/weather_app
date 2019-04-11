@@ -1,4 +1,4 @@
-html,body{ height: 100%; background-color: #0041C2;}
+html,body{ height: 100%; background-color: #0041C2; max-width: 100%; overflow-x: hidden;}
 
 h1,h2,h3,h4,p{ font-family: Arial; }
 
@@ -15,7 +15,7 @@ h1,h2,h3,h4,p{ font-family: Arial; }
 .main_title_container{
     width: 40%;
     height: 45%;
-    background-color:#00121F;
+    background-color: rgba(0,18,31,0.7);
     position: relative;
     top: 20%;
     left: 30%;
@@ -69,6 +69,11 @@ h1,h2,h3,h4,p{ font-family: Arial; }
     border-radius: 4px;
 }
 
+#default_message,#error_message{
+    position: relative;
+    top: 15%;
+    left: 20%;
+}
 
 .weather_info_container{
     width: 92%;
@@ -85,6 +90,7 @@ h1,h2,h3,h4,p{ font-family: Arial; }
     display: inline;
     position: absolute;
     top: 20%;
+    
 }
 
 .weather_info1{ left: 25%; }
@@ -100,9 +106,15 @@ h1,h2,h3,h4,p{ font-family: Arial; }
     height: 20%;
     position: absolute;
     top: 125%;
+    display: block;
 }
-    
 
+.footer_content{
+    position: relative;
+    left: 10%;
+    padding: 25px;
+    display: inline-block;
+}
 
 @media screen and (max-width: 800px){
     .main_title_container p{
@@ -122,6 +134,23 @@ h1,h2,h3,h4,p{ font-family: Arial; }
     .weather_info2{ left: 60%; }
     .weather_info1 h1,h2{ font-size: 25px; }
     .weather_info2 h2,h3{ font-size: 25px; }
+
+}
+
+@media screen and (max-width: 365px){
+      
+    .input_forms input[type=text],select{
+        padding: 12px 20px;
+        margin: 5px 0;
+        display: inline-block;
+        border: 1px solid #ccc;
+        border-radius: 4px;
+        box-sizing: border-box;
+        width: 150px;
+    }
+
+    .weather_info1 h1,h2{ font-size: 20px; }
+    .weather_info2 h2,h3{ font-size: 20px; }
 
 }
 
