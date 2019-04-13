@@ -21,22 +21,22 @@ country_dict = {
 'U.S.A':'US'
 }
 
-
-
 @app.route('/')
 def index():
     return render_template("weather_template.html")
 
+#gets data form the two text forms
+city_name = request.form['city_input']
+country_name = request.form['country_input']
+country_code = country_dict[country_name]
+
+#url to request weather data
+url = '''http://api.openweathermap.org/data/2.5/weather?q='''+ city_name + ','+ country_code + '''&APPID='''+ weather_id + '''&units=metric'''
+
 @app.route('/get_city',methods=['POST'])
 def get_city():
 
-    #gets data form the two text forms
-    city_name = request.form['city_input']
-    country_name = request.form['country_input']
-    country_code = country_dict[country_name]
-    
-    url = '''http://api.openweathermap.org/data/2.5/weather?q='''+ city_name + ','+ country_code + '''&APPID='''+ weather_id + '''&units=metric'''
-
+    #processes weather data and puts them on html template
     res = requests.get(url)
     data = res.json()
     data_code_response = data['cod']
@@ -61,9 +61,10 @@ def get_city():
         weather_pressure = weather_pressure,
         weather_windspeed = weather_windspeed )
 
-@app.route('/get_ip',methods=['GET'])
-def get_client_ip():
-    return request.environ.get('HTTP_X_REAL_IP', request.remote_addr)
+#working on a function to send data asyincronously with Ajax
+@app.route('/json_weather_data')
+def send_json_data():
+    return jsonify(city = city_name,country=country_name)
 
 #updates css when changed
 @app.context_processor
