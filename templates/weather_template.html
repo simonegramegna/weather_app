@@ -5,13 +5,16 @@
         <meta charset="UTF-8">
         <!--Bootstrap-->
         <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.3.1/css/bootstrap.min.css" integrity="sha384-ggOyR0iXCbMQv3Xipma34MD+dH/1fQ784/j6cY/iJTQUOhcWr7x9JvoRxT2MZw1T" crossorigin="anonymous">
+        <!--weather icons
+        <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/weather-icons/2.0.9/css/weather-icons-wind.css">
+        -->
+
         <!--font awesome-->
         <link rel="stylesheet" href="https://use.fontawesome.com/releases/v5.8.1/css/all.css" integrity="sha384-50oBUHEmvpQ+1lW4y57PTFmhCaXp0ML5d60M1M7uH2+nqUivzIebhndOJK28anvf" crossorigin="anonymous">
-        <!--ajax function-->
-        <script src="{{ url_for('static', filename='ajax_function.js') }}"></script>
-   
+
+
         <meta name="viewport" content="width=device-width, initial-scale=1">
-        <!--main css file-->
+        <!--css file-->
         <link rel="stylesheet" href="{{ url_for('static', filename='style.css') }}">
     </head>
 <body>
@@ -27,10 +30,10 @@
     <div class="form_group">
       <form action="/get_weather" method="POST">
         <div id="input1_container" class="input_forms">
-          <input type="text" autocomplete="off" placeholder="Insert a city"  name="city_input" id="city_input">
+          <input type="text" autocomplete="off" placeholder="Insert a city"  name="city_input">
         </div>
         <div id="input2_container" class="input_forms">
-          <select name="country_input" id="country_input">
+          <select name="country_input">
             <option>Italy</option>
             <option>U.S.A.</option>
             <option>United Kingdom</option>
@@ -38,7 +41,7 @@
           </select>
         </div>
         <div id="input3_container" class="input_forms">
-          <input type="submit" value="submit" id="submit_btn">
+          <input type="submit" value="Submit">
         </div>
       </form>
     </div>
@@ -73,7 +76,10 @@
     </div>
   </div>
   
+
+<script src="https://code.jquery.com/jquery-3.3.1.slim.min.js" integrity="sha384-q8i/X+965DzO0rT7abK41JStQIAqVgRVzpbzo5smXKp4YfRvH+8abtTE1Pi6jizo" crossorigin="anonymous"></script>
 <script src="https://cdnjs.cloudflare.com/ajax/libs/popper.js/1.14.7/umd/popper.min.js" integrity="sha384-UO2eT0CpHqdSJQ6hJty5KVphtPhzWj9WO1clHTMGa3JDZwrnQq4sF86dIHNDz0W1" crossorigin="anonymous"></script>
 <script src="https://stackpath.bootstrapcdn.com/bootstrap/4.3.1/js/bootstrap.min.js" integrity="sha384-JjSmVgyd0p3pXB1rRibZUAYoIIy6OrQ6VrjIEaFf/nJGzIxFDsf4x0xIM+B07jRM" crossorigin="anonymous"></script>
-  </body>
+  
+</body>
 </html>
