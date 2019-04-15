@@ -18,7 +18,10 @@ country_dict = {
 'Italy':'IT',
 'United Kingdom':'UK',
 'Germany':'DE',
-'U.S.A':'US'
+'U.S.A':'US',
+'France':'FR',
+'Russia':'RU',
+'Spain':'ES'
 }
 
 
@@ -34,32 +37,37 @@ def get_city():
     city_name = request.form['city_input']
     country_name = request.form['country_input']
     country_code = country_dict[country_name]
+    print(country_name)
+    print(country_code)
     
     url = '''http://api.openweathermap.org/data/2.5/weather?q='''+ city_name + ','+ country_code + '''&APPID='''+ weather_id + '''&units=metric'''
 
     res = requests.get(url)
     data = res.json()
     data_code_response = data['cod']
-    
-    if  data_code_response == '404':
-        message = "City\t" + str(city_name) + "\t not found"
-        return render_template("weather_template.html",message_error = message)
-        
-    if data_code_response == 200:
-        #gets weather data
-        weather_description = data['weather'][0]['description']
-        weather_temp = data['main']['temp']  
-        weather_humidity = data['main']['humidity']
-        weather_pressure = data['main']['pressure']
-        weather_windspeed = data['wind']['speed']
 
-    return render_template("weather_template.html",
-        city_name = city_name,
-        weather_description = weather_description,
-        weather_temp = weather_temp, 
-        weather_humidity = weather_humidity,
-        weather_pressure = weather_pressure,
-        weather_windspeed = weather_windspeed )
+    if request.method == 'POST':
+        if  data_code_response == '404':
+            message = "City\t" + str(city_name) + "\t not found"
+            return render_template("weather_template.html",message_error = message)
+        
+        if data_code_response == 200:
+            #gets weather data
+            weather_description = data['weather'][0]['description']
+            weather_temp = data['main']['temp']  
+            weather_humidity = data['main']['humidity']
+            weather_pressure = data['main']['pressure']
+            weather_windspeed = data['wind']['speed']
+
+        return render_template("weather_template.html", 
+            city_name = city_name,
+            weather_description = weather_description,
+            weather_temp = weather_temp, 
+            weather_humidity = weather_humidity,
+            weather_pressure = weather_pressure,
+            weather_windspeed = weather_windspeed )
+
+    return render_template("weather_template.html")
 
 #updates css when changed
 @app.context_processor
