@@ -1,8 +1,4 @@
 from flask  import Flask, render_template, request, flash, jsonify, url_for
-#from flask_bootstrap import Bootstrap
-#from flask_wtf import FlaskForm
-from wtforms import StringField, SubmitField, Form, validators
-from wtforms.validators import DataRequired, Length
 import requests
 import json
 import os
@@ -25,7 +21,6 @@ country_dict = {
 }
 
 
-
 @app.route('/')
 def index():
     return render_template("weather_template.html")
@@ -37,8 +32,6 @@ def get_city():
     city_name = request.form['city_input']
     country_name = request.form['country_input']
     country_code = country_dict[country_name]
-    print(country_name)
-    print(country_code)
     
     url = '''http://api.openweathermap.org/data/2.5/weather?q='''+ city_name + ','+ country_code + '''&APPID='''+ weather_id + '''&units=metric'''
 
