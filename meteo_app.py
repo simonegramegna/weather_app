@@ -3,7 +3,7 @@ import requests
 import json
 import os
 
-app = Flask(__name__)
+weather_app = Flask(__name__)
 
 #Legge il file dove sta il token di OpenWeatherMap
 with open('weather_id.txt','r') as file_id:
