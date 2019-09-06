@@ -24,9 +24,9 @@ country_dict = {
 def index():
     #mostro l'indirizzo IP  del vistatore
 
-    ip = request.environ.get('HTTP_X_REAL_IP',request.remote_addr)
+    
 
-    return render_template("weather_template.html",indirizzo_ip = ip)
+    return render_template("weather_template.html")
 
 @app.route('/get_weather',methods=['POST'])
 def get_city():
@@ -60,6 +60,7 @@ def get_city():
             weather_pressure = data['main']['pressure']
             weather_windspeed = data['wind']['speed']
             
+           
 
         return render_template("weather_template.html", 
             city_name = city_name,
@@ -73,7 +74,6 @@ def get_city():
 
     #mostro l'indirizzo IP  del vistatore
 
-ip = request.environ.get('HTTP_X_REAL_IP',request.remote_addr)
 
 
 #updates css when changed
