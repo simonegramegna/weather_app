@@ -1,83 +1,125 @@
 <!DOCTYPE html>
 <html>
     <head>
-      <title>Weather Today</title>
+
+      <title> GetWeatherToday.herokuapp.com </title>
       <meta charset="UTF-8">
-      <!--Bootstrap-->
-      <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.3.1/css/bootstrap.min.css" integrity="sha384-ggOyR0iXCbMQv3Xipma34MD+dH/1fQ784/j6cY/iJTQUOhcWr7x9JvoRxT2MZw1T" crossorigin="anonymous">
-        
+     
       <!--jquery-->
       <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.3.1/jquery.min.js"></script>
       <!--font awesome-->
       <link rel="stylesheet" href="https://use.fontawesome.com/releases/v5.8.1/css/all.css" integrity="sha384-50oBUHEmvpQ+1lW4y57PTFmhCaXp0ML5d60M1M7uH2+nqUivzIebhndOJK28anvf" crossorigin="anonymous">
         
+     
       <meta name="viewport" content="width=device-width, initial-scale=1">
       <!--css file-->
       <link rel="stylesheet" href="{{ url_for('static', filename='style.css') }}">
+
     </head>
+
 <body>
 
-    <!--main header-->
+    <!--main header container-->
     <div class="main_header">
-        <div class="main_title_container">
-            <p>Weather today.org</p>
-        </div>
+
+      <div class="main_title_container">
+
+        <p>GetWeatherToday.herokuapp.com</p> 
+
+      </div>
     </div>
 
     <!--form group-->
     <div class="form_group">
-      <form action="/get_weather" method="POST">
-        <div id="input1_container" class="input_forms">
-          <input type="text" autocomplete="off" placeholder="Insert a city"  name="city_input">
-        </div>
-        <div id="input2_container" class="input_forms">
-          <select name="country_input">
-            <option>Italy</option>
-            <option>U.S.A</option>
-            <option>United Kingdom</option>
-            <option>Germany</option>
-            <option>France</option>
-            <option>Russia</option>
-          </select>
-        </div>
-        <div id="input3_container" class="input_forms">
-          <input type="submit" value="Submit" id="btn">
-        </div>
+
+      <form>
+
+          <input type="text" autocomplete="off" placeholder="Insert a city" name="city_input" id="city_input">
+          <input type="submit" value="GO!"  id="submit_btn">
+
       </form>
     </div>
 
      
   <!--weather_info group-->
   <div class="weather_info_container">
-     {% if weather_description %}
-      <div class="weather_info1">
-        <h1>{{ city_name }}</h1>
-        <h2>{{ weather_temp }}°C</h2>
-      </div>
-    <div class="weather_info2">
-      <h2>{{ weather_description }}</h2>
-      <h3>Humidity: {{ weather_pressure }} hPa</h3>
-      <h3>Windspeed: {{ weather_windspeed }} Km/h</h3>
+
+    <div class="weather_info_display">
+      
+      <h4 id="o0"></h4>
+      <p id="o1"></p>
+      <p id="o2"></p>
+      <p id="o3"></p>
+      <p id="o4"></p>
+     
+
     </div>
-  {% elif message_error %}
-    <h2 id="error_message">City not found</h2>
-  {% else %}
-    <h2 id="default_message">Insert a city</h2>
-  {% endif %}
+    
   </div>
 
   <!--footer-->
   <div id="footer">
-    <div class="footer_content">
-        <h4>Made by Simone Gramegna</h4>
-        <a href="https://github.com/simonegramegna/weather_app">
-          <i class="fab fa-github"></i>
-        </a>
-      
-    <p>{{ indirizzo_ip }}</p>
     
-    </div>
+      
+    
+    
   </div>
+
+ 
+
+  <script type="text/javascript">
+
+    $(document).ready(function(){
+
+      $('form').on('submit',function(){
+
+          $.ajax({
+            data : {
+              city_input : $("#city_input").val()
+            },
+            type: 'POST',
+            url: '/weather_today'
+
+          }).done(function(data){
+
+              if(data.response == '404')
+              {
+
+                $('#o1').text(data.city);
+               
+                $('#o2').text("");
+                $('#o3').text("");
+                $('#o4').text("");
+
+              }
+              else
+              {
+                $('#o1').text(data.city);
+                $('#o2').text(data.weather_description);
+                $('#o3').text(data.weather_temp_min);
+                $('#o4').text(data.weather_temp_max);
+
+
+              }
+
+
+
+
+
+          });
+
+          event.preventDefault();
+
+
+      });
+
+    });
+
+  
+  
+  
+  
+  </script>
   
   </body>
 </html>

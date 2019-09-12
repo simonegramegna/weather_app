@@ -1,8 +1,9 @@
-html,body{ height: 100%; background-color: #0041C2; max-width: 100%; overflow-x: hidden;}
+body{ height: 100%; background-color: #0a0a0a; max-width: 100%; overflow-x: hidden;}
 
 h1,h2,h3,h4,p{ font-family: Arial; }
 
-.main_header{
+.main_header
+{
     display: block;
     width: 100%;
     height: 40%;
@@ -10,102 +11,121 @@ h1,h2,h3,h4,p{ font-family: Arial; }
     position: absolute;
     top: 0%;
     left: 0%;
+    z-index: 0;
 }
 
-.main_title_container{
-    width: 40%;
+.main_title_container
+{
+    width: 45%;
     height: 45%;
-    background-color: rgba(0,18,31,0.7);
+    background-color: inherit;
     position: relative;
-    top: 20%;
-    left: 30%;
+    top: 10%;
+    left: 25%;
     right: 25%;
     overflow: visible;
+    border: 3px solid #ff0;
+    border-radius: 20px;
+    z-index: 1;
     
 }
 
-.main_title_container p{
-    color: white;
+.main_title_container p
+{
+    color:#ff0;
     position: relative;
     top: 1%;
     padding: 5%;
-    font-size: 30px;
-    color: white;
-}
-
-.form_group{
-    width: 92%;
-    height: 38%;
-    position: absolute;
-    top: 40%;
-    left: 4%;
-    right: 4%;
-    background-color: #ffffff;
-}
-
-.input_forms input[type=text],select{
-    padding: 12px 20px;
-    margin: 5px 0;
-    display: inline-block;
-    border: 1px solid #ccc;
-    border-radius: 4px;
-    box-sizing: border-box;
-}
-
-#input1_container,#input2_container,#input3_container{
-    display: inline;
-    position: relative;
-    top: 50px;
-    left: 25%;
-    padding: 10px;
-}
-
-#input3_container input{
-    background-color: #0041C2;
-    color: white;
-    padding: 14px 20px;
-    margin: 8px 0;
-    border: none;
-    border-radius: 4px;
-}
-
-#default_message,#error_message{
-    position: relative;
-    top: 15%;
-    left: 20%;
-}
-
-.weather_info_container{
-    width: 92%;
-    height: 42%;
-    background-color: #ffffff;
-    position: absolute;
-    left: 4%;
-    right: 4%;
-    top: 80%;
-    color: #00121F;
-}
-
-.weather_info1,.weather_info2{
-    display: inline;
-    position: absolute;
-    top: 20%;
+    font-size: 1.5em;
     
 }
 
-.weather_info1{ left: 25%; }
+.form_group
+{
+    width: 92%;
+    height: 25%;
+    position: absolute;
+    top: 30%;
+    left: 4%;
+    right: 4%;
+    background-color: inherit;
+}
 
-.weather_info2{ left: 50%; }
+.form_group form
+{
+    position: relative;
+    
+    top: 10%;
+    left: 29%;
+}
 
-.input_forms{ width: 20%; }
+#city_input
+{
+    height: 3em;
+    width: 20%;
+    border-radius: 5px;
+    
+    
+}
+
+#submit_btn
+{
+    position: absolute;
+    background-color: black;
+    border: 2px black solid;
+    border-radius: 3px;
+    color: #ff0;
+    width: 15%;
+    left: 22.5%;
+    height: 100%;
+
+}
+
+
+
+
+
+
+
+
+
+
+
+.weather_info_container
+{
+    width: 92%;
+    height: 38%;
+    background-color: inherit;
+    position: absolute;
+    left: 4%;
+    right: 4%;
+    top: 47.5%;
+    color: white;
+}
+
+
+.weather_info_display
+{
+    width: 40%;
+    height: 110%;
+    border: solid 2px #ff0;
+    border-radius: 10px; 
+    position: relative;
+    left: 27.5%;
+    
+
+}
+
 
 #footer{
-    background-color: #00121F;
+    background-color: #ff0;
     color: white;
     width: 100%;
     height: 20%;
     position: absolute;
-    top: 125%;
+    left: 0%;
+    right: 0%;
+    top: 95%;
     display: block;
 }
 
@@ -115,42 +135,3 @@ h1,h2,h3,h4,p{ font-family: Arial; }
     padding: 25px;
     display: inline-block;
 }
-
-@media screen and (max-width: 800px){
-    .main_title_container p{
-        font-size: 20px;
-        
-    }
-
-    #input1_container,#input2_container,#input3_container{
-       
-        display: block;
-        padding: 5px;
-        top: 10px;
-        left: 35%;
-    }
-    .weather_info1,.weather_info2{ display: block; }
-
-    .weather_info2{ left: 60%; }
-    .weather_info1 h1,h2{ font-size: 25px; }
-    .weather_info2 h2,h3{ font-size: 25px; }
-
-}
-
-@media screen and (max-width: 365px){
-      
-    .input_forms input[type=text],select{
-        padding: 12px 20px;
-        margin: 5px 0;
-        display: inline-block;
-        border: 1px solid #ccc;
-        border-radius: 4px;
-        box-sizing: border-box;
-        width: 150px;
-    }
-
-    .weather_info1 h1,h2{ font-size: 20px; }
-    .weather_info2 h2,h3{ font-size: 20px; }
-
-}
-
