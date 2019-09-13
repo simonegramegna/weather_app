@@ -32,7 +32,7 @@ def get_weather_today():
         
         if data_code  == '404':
 
-            city = city + '\t not found'
+            city = "The city \t "+ city + '\t not found'
 
             return jsonify({ 'response' : data_code, 
                              'city': city })
@@ -41,6 +41,7 @@ def get_weather_today():
             
             return jsonify({
                 'response' : data_code,
+                'condition_code': int(data['weather'][0]['id']),
                 'weather_description' : data['weather'][0]['description'],
                 'weather_temp_min' : data['main']['temp_min'],
                 'weather_temp_max' : data['main']['temp_max'],

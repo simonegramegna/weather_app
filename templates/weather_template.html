@@ -3,16 +3,17 @@
     <head>
 
       <title> GetWeatherToday.herokuapp.com </title>
-      <meta charset="UTF-8">
-     
+      <meta charset="UTF-8"> 
+      <meta name="viewport" content="width=device-width, initial-scale=1">
+
+      <!--main font-->
+      <link href="https://fonts.googleapis.com/css?family=Manjari&display=swap" rel="stylesheet">
+      
       <!--jquery-->
       <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.3.1/jquery.min.js"></script>
       <!--font awesome-->
-      <link rel="stylesheet" href="https://use.fontawesome.com/releases/v5.8.1/css/all.css" integrity="sha384-50oBUHEmvpQ+1lW4y57PTFmhCaXp0ML5d60M1M7uH2+nqUivzIebhndOJK28anvf" crossorigin="anonymous">
-        
-     
-      <meta name="viewport" content="width=device-width, initial-scale=1">
-      <!--css file-->
+      <link rel="stylesheet" href="https://use.fontawesome.com/releases/v5.10.2/css/all.css" integrity="sha384-rtJEYb85SiYWgfpCr0jn174XgJTn4rptSOQsMroFBPQSGLdOC5IbubP6lJ35qoM9" crossorigin="anonymous">
+      <!--main css file-->
       <link rel="stylesheet" href="{{ url_for('static', filename='style.css') }}">
 
     </head>
@@ -45,12 +46,29 @@
   <div class="weather_info_container">
 
     <div class="weather_info_display">
+
+        <div class="weather_info_display_city">
+          <p id="city">  </p>
+        </div>
+
+        <div class="weather_info_display_icon">
+            <i id="icon"></i>
+         
+           
+
+        </div>
+
+        <div class="weather_info_display_description">
+          <p id="description">  </p>
+        </div>
+
+        <div class="weather_info_display_temp">
+          <p id="t_max">  </p> <p id="t_min">  </p>
+        </div>
+
+
+
       
-      <h4 id="o0"></h4>
-      <p id="o1"></p>
-      <p id="o2"></p>
-      <p id="o3"></p>
-      <p id="o4"></p>
      
 
     </div>
@@ -59,6 +77,10 @@
 
   <!--footer-->
   <div id="footer">
+
+    <p id="check">
+
+    </p>
     
       
     
@@ -69,7 +91,77 @@
 
   <script type="text/javascript">
 
-    $(document).ready(function(){
+  
+
+  function remove_all_classes()
+  {
+    var classList = document.getElementById('icon').className.split(/\s+/);
+
+      for (var i = 0; i < classList.length; i++) 
+      {
+
+        $("#icon").removeClass(classList[i]);
+            
+      }
+  }
+    
+    function change_icon( condition_code )
+    {
+      //thunderstorm
+      if( condition_code >= 200 && condition_code <= 232 )
+      {
+        remove_all_classes();
+        $("#icon").addClass("fas fa-bolt");
+        //<i class="fas fa-bolt"></i>
+
+
+      }
+      else if( condition_code >= 300 && condition_code <= 321 )
+      {
+        remove_all_classes();
+        $("#icon").addClass("fas fa-cloud-rain");
+
+      }
+      else if( condition_code >= 500 && condition_code <= 531 )
+      {
+        remove_all_classes();
+        $("#icon").addClass("fas fa-cloud-showers-heavy");
+
+      }
+      else if( condition_code >= 600 && condition_code <= 622 )
+      {
+        remove_all_classes();
+        $("#icon").addClass("far fa-snowflake");
+
+        //<i class="fas fa-wind"></i>
+
+      }
+      else if( condition_code >= 701 && condition_code <= 781 )
+      {
+        remove_all_classes();
+        $("#icon").addClass("fas fa-wind");
+
+      }
+      else if( condition_code == 800 )
+      {
+        remove_all_classes();
+        $("#icon").addClass("far fa-sun");
+
+
+      }
+      else if( condition_code >= 801 && condition_code <= 804 )
+      {
+        remove_all_classes();
+        $("#icon").addClass("fas fa-cloud");
+
+      }
+      else
+      {
+        remove_all_classes();
+      }
+    }
+      
+  $(document).ready(function(){
 
       $('form').on('submit',function(){
 
@@ -84,42 +176,37 @@
 
               if(data.response == '404')
               {
-
-                $('#o1').text(data.city);
-               
-                $('#o2').text("");
-                $('#o3').text("");
-                $('#o4').text("");
-
+                remove_all_classes();
+                $('#city').text(data.city);
+                $('#description').text("");
+                $('#t_min').text("");
+                $('#t_max').text("");
+                
               }
               else
               {
-                $('#o1').text(data.city);
-                $('#o2').text(data.weather_description);
-                $('#o3').text(data.weather_temp_min);
-                $('#o4').text(data.weather_temp_max);
-
-
+                  
+                change_icon(data.condition_code);
+                $('#city').text(data.city);
+                $('#description').text(data.weather_description);
+                $('#t_min').text(data.weather_temp_min);
+                $('#t_max').text(data.weather_temp_max);
+                
               }
 
 
 
 
-
-          });
-
-          event.preventDefault();
-
-
+            });
+        event.preventDefault();
+        });
       });
-
-    });
 
   
   
   
   
   </script>
-  
+
   </body>
 </html>
