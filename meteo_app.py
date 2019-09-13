@@ -43,8 +43,8 @@ def get_weather_today():
                 'response' : data_code,
                 'condition_code': int(data['weather'][0]['id']),
                 'weather_description' : data['weather'][0]['description'],
-                'weather_temp_min' : data['main']['temp_min'],
-                'weather_temp_max' : data['main']['temp_max'],
+                'weather_temp_min' : round(data['main']['temp_min'],1),
+                'weather_temp_max' : round(data['main']['temp_max'],1),
                 'city': city })
 
         

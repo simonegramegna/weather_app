@@ -65,8 +65,6 @@ p{ font-family: 'Manjari', sans-serif;}
     width: 20%;
     border-radius: 5px;
     font-family: 'Manjari', sans-serif;
-    
-    
 }
 
 #submit_btn
@@ -81,7 +79,6 @@ p{ font-family: 'Manjari', sans-serif;}
     height: 100%;
     font-family: 'Manjari', sans-serif;
     font-size: 1.2em;
-
 }
 
 #submit_btn:hover
@@ -91,16 +88,6 @@ p{ font-family: 'Manjari', sans-serif;}
     transition: 0.5s;
     color: black;
 }
-
-
-
-
-
-
-
-
-
-
 
 .weather_info_container
 {
@@ -113,7 +100,6 @@ p{ font-family: 'Manjari', sans-serif;}
     top: 47.5%;
     color: white;
 }
-
 
 .weather_info_display
 {
@@ -149,16 +135,9 @@ p{ font-family: 'Manjari', sans-serif;}
     position: relative;
     left: 0%;
     top: 0%;
-    height: 35%;
+    height: 25%;
     width: 100%;
    ;
-}
-
-object
-{
-    width: inherit;
-    height: inherit;
-    position: inherit;
 }
 
 .weather_info_display_description
@@ -168,35 +147,22 @@ object
     top: 0%;
     width: 100%;
     height: 7.5%;
-
 }
 
 #icon
 {
     color: #ff0;
     position: relative;
-    top: 20%;
+    top: 0%;
     left: 40%;
-   
-    font-size: 50px;
+    font-size: 4em;
 }
-/*
-#icon
-{
-    color: black;
-    position: relative;
-    top: 15%;
-    left: 30%;
-    width: 10em;
-    height: 10em;
-}
-*/
 
 .weather_info_display_description p
 {
     position: relative;
     top: 0%;
-    left: 30%;
+    left: 35%;
     font-size: 1.5em;
 } 
 
@@ -212,11 +178,10 @@ object
 
 }
 
-
 .weather_info_display_temp p
 { 
     position: relative;
-    left: 25%;
+    left: 30%;
     top: 0%;
     display: inline;
     padding-left: 5%;
@@ -224,30 +189,19 @@ object
 
 }
 
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-#footer{
+#footer
+{
     background-color: #ff0;
-    color: white;
+    color: black;
     width: 100%;
-    height: 20%;
+    min-height: 20%;
+    max-height: 60%;
     position: absolute;
     left: 0%;
     right: 0%;
     top: 95%;
     display: block;
+    
 }
 
 .footer_content{
@@ -255,4 +209,9 @@ object
     left: 10%;
     padding: 25px;
     display: inline-block;
+}
+.footer_content i
+{
+    color: black;
+    padding: 0.2em;
 }
