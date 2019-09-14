@@ -1,4 +1,4 @@
-body{ height: 100%; background-color: #0a0a0a; max-width: 100%; overflow-x: hidden;}
+body{  background-color: #0a0a0a; max-width: 100%; overflow-x: hidden;}
 
 p{ font-family: 'Manjari', sans-serif;}
 
@@ -35,6 +35,7 @@ p{ font-family: 'Manjari', sans-serif;}
     color:#ff0;
     position: relative;
     top: 1%;
+    left : 20%;
     padding: 5%;
     font-size: 1.5em;
     
@@ -54,7 +55,6 @@ p{ font-family: 'Manjari', sans-serif;}
 .form_group form
 {
     position: relative;
-    
     top: 10%;
     left: 29%;
 }
@@ -62,6 +62,8 @@ p{ font-family: 'Manjari', sans-serif;}
 #city_input
 {
     height: 3em;
+    position: relative;
+    left: 0%;
     width: 20%;
     border-radius: 5px;
     font-family: 'Manjari', sans-serif;
@@ -69,14 +71,14 @@ p{ font-family: 'Manjari', sans-serif;}
 
 #submit_btn
 {
-    position: absolute;
+    position: relative;
     background-color: black;
     border: 2px black solid;
     border-radius: 3px;
     color: #ff0;
     width: 15%;
-    left: 22.5%;
-    height: 100%;
+    left: 2.5%;
+    height: 2.5em;
     font-family: 'Manjari', sans-serif;
     font-size: 1.2em;
 }
@@ -89,7 +91,7 @@ p{ font-family: 'Manjari', sans-serif;}
     color: black;
 }
 
-.weather_info_container
+#weather_info_main
 {
     width: 92%;
     height: 38%;
@@ -101,7 +103,10 @@ p{ font-family: 'Manjari', sans-serif;}
     color: white;
 }
 
-.weather_info_display
+
+
+
+#weather_info_display
 {
     width: 40%;
     height: 110%;
@@ -111,41 +116,38 @@ p{ font-family: 'Manjari', sans-serif;}
     left: 27.5%;
 }
 
-.weather_info_display_city
+.weahter_info /*common properties*/
 {
     position: relative;
-    top: 0%;
-    left: 0%;
     width: 100%;
+    
+    left: 0%
+
+}
+
+#weather_info_display_city
+{
     height: 12.5%;
     padding-bottom: 2%;
+    
 }
-.weather_info_display_city p
+#city
 {
     position: relative;
     top: 0%;
-    left: 10%;
+    left: 40%;
     right: 25%;
     font-size: 1.5em;
    
 }
 
-.weather_info_display_icon
+#weather_info_display_icon
 {
-    position: relative;
-    left: 0%;
-    top: 0%;
     height: 25%;
-    width: 100%;
-   ;
 }
 
-.weather_info_display_description
+#weather_info_display_description
 {
-    position: relative;
-    left: 0%;
-    top: 0%;
-    width: 100%;
     height: 7.5%;
 }
 
@@ -158,7 +160,7 @@ p{ font-family: 'Manjari', sans-serif;}
     font-size: 4em;
 }
 
-.weather_info_display_description p
+#description 
 {
     position: relative;
     top: 0%;
@@ -166,42 +168,34 @@ p{ font-family: 'Manjari', sans-serif;}
     font-size: 1.5em;
 } 
 
-.weather_info_display_temp 
+#weather_info_display_temp 
 {
-    position: relative;
-    left: 0%;
     top: 10%;
     height: 15%;
-    width: 100%;
-
-
-
 }
 
-.weather_info_display_temp p
+#weather_info_display_temp  p
 { 
     position: relative;
     left: 30%;
-    top: 0%;
+    top: 20px;
     display: inline;
     padding-left: 5%;
     font-size: 1.3em;
 
 }
 
-#footer
+footer
 {
     background-color: #ff0;
     color: black;
     width: 100%;
-    min-height: 20%;
-    max-height: 60%;
+    height: 30%;
     position: absolute;
     left: 0%;
     right: 0%;
     top: 95%;
     display: block;
-    
 }
 
 .footer_content{
@@ -221,3 +215,65 @@ p{ font-family: 'Manjari', sans-serif;}
     padding: 0.2em;
     font-size: 1.2em;
 }
+
+@media screen and (max-width: 800px)
+{
+
+    .main_title_container
+    {
+        height: 30%;
+        width: 50%;
+    }
+
+    .main_title_container p
+    {
+        
+        font-size: 1.1em;
+        left: 5%;
+
+    
+    }
+
+    .form_group
+    {
+        top: 22.5%;
+    }
+
+    .form_group input
+    {
+        display: block;
+        
+    }
+    #city_input
+    {
+        left: 0%;
+        width: 40%;
+       
+
+    }
+
+    #submit_btn
+    {
+        position: absolute;
+        top: 150%;
+        left: 7.5%;
+        width: 25%;
+    }
+
+    #weather_info_main
+    {
+        top: 50%;
+    }
+    #weather_info_display
+    {
+        width: 60%;
+        left: 20%;
+    }
+
+    footer
+    {
+        top: 120%;
+    }
+
+}
+

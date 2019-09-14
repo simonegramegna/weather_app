@@ -37,31 +37,35 @@
 
       <form>
 
-          <input type="text" autocomplete="off" placeholder="Insert a city" name="city_input" id="city_input">
-          <input type="submit" value="GO!"  id="submit_btn">
+       
+            <input type="text" autocomplete="off" placeholder="Insert a city" name="city_input" id="city_input">
+        
 
+        
+            <input type="submit" value="GO!"  id="submit_btn">
+        
+      
       </form>
     </div>
 
-     
   <!--weather_info group-->
-  <div class="weather_info_container">
+  <div id="weather_info_main">
 
-    <div class="weather_info_display">
+    <div id="weather_info_display">
 
-      <div class="weather_info_display_city">
+      <div id="weather_info_display_city" class="weather_info">
         <p id="city"></p>
       </div>
 
-      <div class="weather_info_display_icon">
+      <div id="weather_info_display_icon" >
         <i id="icon"></i>
       </div>
 
-      <div class="weather_info_display_description">
+      <div id="weather_info_display_description" class="weather_info">
         <p id="description">  </p>
       </div>
 
-      <div class="weather_info_display_temp">
+      <div id="weather_info_display_temp" class="weather_info">
         <p id="t_max">  </p> <p id="t_min">  </p>
       </div>
     
@@ -69,7 +73,7 @@
   </div>
 
   <!--footer-->
-  <div id="footer">
+  <footer>
 
     <div class="footer_content">
       
@@ -79,7 +83,7 @@
       <a href="https://www.instagram.com/simone_gramegna/"><i class="fab fa-instagram"></i></a>
       <a href="https://www.facebook.com/profile.php?id=100008649377847&ref=bookmarks"><i class="fab fa-facebook"></i></a>
 
-    </div>
+    </footer>
   </div>
 
  
@@ -182,6 +186,7 @@
               {
                 remove_all_classes();
                 $('#city').text(data.city);
+                $("#city").css("left","15%");
                 $('#description').text("");
                 $('#t_min').text("");
                 $('#t_max').text("");
