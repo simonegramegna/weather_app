@@ -38,6 +38,8 @@ def get_weather_today():
                              'city': city })
 
         else:
+
+            
             
             return jsonify({
                 'response' : data_code,
@@ -46,7 +48,8 @@ def get_weather_today():
                 'weather_temp_min' : round(data['main']['temp_min'],1),
                 'weather_temp_max' : round(data['main']['temp_max'],1),
                 'city': city,
-                'ip': request.remote_addr })
+                'ip': requests.get('http://ip.42.pl/raw').text
+             })
 
         
 #updates css when changed
