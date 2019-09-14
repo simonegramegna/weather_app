@@ -5,6 +5,9 @@ import os
 app = Flask(__name__)
 
 #Legge il file dove sta il token di OpenWeatherMap
+with open('ipstack_key.txt','r') as ipstack_id:
+    weather_ip_id = ipstack_id.read()
+
 with open('weather_id.txt','r') as file_id:
     weather_id = str(file_id.read())
 
@@ -12,6 +15,26 @@ with open('weather_id.txt','r') as file_id:
 def index():
     return render_template("weather_template.html")
 
+
+
+@app.route('/weather_position',methods=['POST'])
+def get_weather_position():
+
+    ip_res = requests.get("https://jsonip.com")
+    ip_data = ip_res.json()
+    user_ip = ip_data['ip']
+
+    weather_ip_url =  '''http://api.ipstack.com/''' + user_ip + '?acces_key=' + weather_ip_id +  '''&format=1'''
+
+    res_weather_ip = requests.get(weather_ip_url)
+    weather_ip_data = res_weather_ip.json()
+
+    ip_city = weather_ip_data['city']
+
+    
+    return jsonify({'city': ip_city })
+
+    
 
 @app.route('/weather_today',methods=['POST'])
 def get_weather_today():
@@ -38,21 +61,13 @@ def get_weather_today():
                              'city': city })
 
         else:
-
-            user_ip = request.environ.get('HTTP_X_REAL_IP', request.remote_addr)
-
-            
-            
             return jsonify({
                 'response' : data_code,
                 'condition_code': int(data['weather'][0]['id']),
                 'weather_description' : data['weather'][0]['description'],
                 'weather_temp_min' : round(data['main']['temp_min'],1),
                 'weather_temp_max' : round(data['main']['temp_max'],1),
-                'city': city,
-                'ip': user_ip
-                
-             })
+                'city': city })
 
         
 #updates css when changed

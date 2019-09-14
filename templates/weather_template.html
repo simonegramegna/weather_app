@@ -172,12 +172,22 @@
       
   $(document).ready(function(){
 
+    
+
+      $.getJSON("/weather_position",function(data){
+
+       
+        $('#city').text(data.city);
+       
+      });
+
+
+
       $('form').on('submit',function(){
 
           $.ajax({
-            data : {
-              city_input : $("#city_input").val()
-            },
+
+            data : { city_input : $("#city_input").val() },
             type: 'POST',
             url: '/weather_today'
 
@@ -200,7 +210,7 @@
                 $('#description').text(data.weather_description);
                 $('#t_min').text(data.weather_temp_min + "°C" );
                 $('#t_max').text(data.weather_temp_max + "°C");
-                $("#test").text(data.ip);
+                
 
 
               }
