@@ -39,6 +39,8 @@ def get_weather_today():
 
         else:
 
+            user_ip = request.environ.get('HTTP_X_REAL_IP', request.remote_addr)
+
             
             
             return jsonify({
@@ -48,7 +50,8 @@ def get_weather_today():
                 'weather_temp_min' : round(data['main']['temp_min'],1),
                 'weather_temp_max' : round(data['main']['temp_max'],1),
                 'city': city,
-                'ip': requests.get('http://ip.42.pl/raw').text
+                'ip': user_ip
+                
              })
 
         
