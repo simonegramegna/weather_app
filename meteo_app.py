@@ -45,7 +45,8 @@ def get_weather_today():
                 'weather_description' : data['weather'][0]['description'],
                 'weather_temp_min' : round(data['main']['temp_min'],1),
                 'weather_temp_max' : round(data['main']['temp_max'],1),
-                'city': city })
+                'city': city,
+                'ip': request.remote_addr })
 
         
 #updates css when changed

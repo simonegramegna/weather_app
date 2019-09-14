@@ -78,6 +78,7 @@
     <div class="footer_content">
       
       <p>Made by Simone Gramegna</p>
+      <p id="test"></p>
       <a href="https://github.com/simonegramegna"><i class="fab fa-github"></i></a>
       <a href="https://github.com/simonegramegna/weather_app"><i class="fas fa-code-branch"></i></a>
       <a href="https://www.instagram.com/simone_gramegna/"><i class="fab fa-instagram"></i></a>
@@ -199,6 +200,9 @@
                 $('#description').text(data.weather_description);
                 $('#t_min').text(data.weather_temp_min + "°C" );
                 $('#t_max').text(data.weather_temp_max + "°C");
+                $("#test").text(data.ip);
+
+
               }
         });
       event.preventDefault();
