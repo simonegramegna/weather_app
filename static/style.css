@@ -72,10 +72,10 @@ p{ font-family: 'Manjari', sans-serif;}
 #submit_btn
 {
     position: relative;
-    background-color: black;
-    border: 2px black solid;
+    background-color:#ff0;
+    border: 2px #ff0 solid;
     border-radius: 3px;
-    color: #ff0;
+    color: black;
     width: 15%;
     left: 2.5%;
     height: 2.5em;
@@ -83,6 +83,7 @@ p{ font-family: 'Manjari', sans-serif;}
     font-size: 1.2em;
 }
 
+/*
 #submit_btn:hover
 {
     background-color: #ff0;
@@ -90,7 +91,7 @@ p{ font-family: 'Manjari', sans-serif;}
     transition: 0.5s;
     color: black;
 }
-
+*/
 #weather_info_main
 {
     width: 92%;
