@@ -16,26 +16,6 @@ def index():
     return render_template("weather_template.html")
 
 
-
-@app.route('/weather_position',methods=['POST'])
-def get_weather_position():
-
-    ip_res = requests.get("https://jsonip.com")
-    ip_data = ip_res.json()
-    user_ip = ip_data['ip']
-
-    weather_ip_url =  '''http://api.ipstack.com/''' + user_ip + '?acces_key=' + weather_ip_id +  '''&format=1'''
-
-    res_weather_ip = requests.get(weather_ip_url)
-    weather_ip_data = res_weather_ip.json()
-
-    ip_city = weather_ip_data['city']
-
-    
-    return jsonify({'city': ip_city })
-
-    
-
 @app.route('/weather_today',methods=['POST'])
 def get_weather_today():
 
