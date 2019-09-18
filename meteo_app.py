@@ -4,10 +4,6 @@ import os
 
 app = Flask(__name__)
 
-#Legge il file dove sta il token di OpenWeatherMap
-with open('ipstack_key.txt','r') as ipstack_id:
-    weather_ip_id = ipstack_id.read()
-
 with open('weather_id.txt','r') as file_id:
     weather_id = str(file_id.read())
 
