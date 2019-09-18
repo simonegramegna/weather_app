@@ -41,14 +41,9 @@
     <div class="form_group">
 
       <form>
-
-       
-            <input type="text" autocomplete="off" placeholder="Insert a city" name="city_input" id="city_input">
         
-
-        
-            <input type="submit" value="GO!"  id="submit_btn">
-        
+        <input type="text" autocomplete="off" placeholder="Insert a city" name="city_input" id="city_input">
+        <input type="submit" value="GO!"  id="submit_btn">
       
       </form>
     </div>
@@ -58,8 +53,39 @@
 
     <div id="weather_info_display">
 
+      <div id="info_btn">
+
+        <i class="fas fa-bars" id="btn_icon"></i>
+
+         
+
+      </div>
+
+      <div id="more_info" class="close">
+
+        <table id="info_table">
+          <tr>
+            <th class="column1 city"></th>
+            <th class="column2">IT</th>
+          </tr>
+          <tr>
+            <td class="column1 description"></td>
+            <td class="column2">  </td>
+          </tr>
+          <tr>
+            <td class="column1 t_min" ></td>
+            <td class="column2 t_max" "> </td>
+          </tr>
+          <tr>
+              <td class="column1">prova</td>
+              <td class="column2"> prova </td>
+          </tr>
+
+        </table>
+      </div>
+
       <div id="weather_info_display_city" class="weather_info">
-        <p id="city"></p>
+        <p class="city" id="container_city"></p>
       </div>
 
       <div id="weather_info_display_icon" >
@@ -67,11 +93,11 @@
       </div>
 
       <div id="weather_info_display_description" class="weather_info">
-        <p id="description">  </p>
+        <p class="description" id="container_description"></p>
       </div>
 
       <div id="weather_info_display_temp" class="weather_info">
-        <p id="t_max">  </p> <p id="t_min">  </p>
+        <p class="t_max" id="container_t_max"> </p> <p class="t_min" id="container_t_min"> </p>
       </div>
     
     </div>

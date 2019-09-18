@@ -79,6 +79,15 @@ function change_icon( condition_code )
     
 $(document).ready(function(){
 
+  $("#info_btn").click(function(){
+   
+    $("#more_info").toggleClass("close");
+    $("#btn_icon").toggleClass("black");
+    
+  });
+
+ 
+
   $('form').on('submit',function(){
 
     $.ajax({
@@ -92,20 +101,24 @@ $(document).ready(function(){
         if(data.response == '404')
         {
             remove_all_classes();
-            $('#city').text(data.city);
-            $("#city").css("left","15%");
-            $('#description').text("");
-            $('#t_min').text("");
-            $('#t_max').text("");
+            $("#info_btn").css("display","none");
+            //$("#btn_icon").css("dispaly","none");
+
+            $('.city').text(data.city);
+            $(".city").css("left","15%");
+            $('.description').text("");
+            $('.t_min').text("");
+            $('.t_max').text("");
               
         }
         else
         {
+            $("#info_btn").css("display","block");
             change_icon(data.condition_code);
-            $('#city').text(data.city);
-            $('#description').text(data.weather_description);
-            $('#t_min').text(data.weather_temp_min + "°C" );
-            $('#t_max').text(data.weather_temp_max + "°C");
+            $('.city').text(data.city);
+            $('.description').text(data.weather_description);
+            $('.t_min').text(data.weather_temp_min + "°C" );
+            $('.t_max').text(data.weather_temp_max + "°C");
         }
       });
     event.preventDefault();
